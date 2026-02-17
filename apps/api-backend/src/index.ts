@@ -110,7 +110,7 @@ const app = new Elysia()
   return response;
 }, {
   body: Conversation
-}).listen(4000);
+}).listen(process.env.PORT || 4000);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

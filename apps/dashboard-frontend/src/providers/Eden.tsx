@@ -2,7 +2,9 @@ import { treaty } from '@elysiajs/eden'
 import type { App } from 'app'
 import { createContext, useContext } from 'react';
 
-const client = treaty<App>('localhost:3000', {
+const API_URL = process.env.VITE_API_URL || 'localhost:3000';
+
+const client = treaty<App>(API_URL, {
     fetch: {
         credentials: 'include'
     }
