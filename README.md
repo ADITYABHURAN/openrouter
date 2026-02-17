@@ -1,135 +1,125 @@
-# Turborepo starter
+# OneAPI — Unified AI API Gateway
 
-This Turborepo starter is maintained by the Turborepo core team.
+OneAPI is a unified API gateway that lets you access 200+ AI models (GPT-4, Claude, Gemini, Llama, and more) through a single endpoint. One API key, one integration, all models.
 
-## Using this example
+## Features
 
-Run the following command:
+- **Unified API** — One endpoint for all AI models. Switch providers without changing code.
+- **200+ Models** — Access OpenAI, Anthropic, Google, Meta models and more.
+- **Usage Analytics** — Track spending, monitor usage, and optimize costs.
+- **Credit System** — Built-in billing with credits and per-key usage tracking.
+- **Developer First** — OpenAI-compatible API. Drop-in replacement — just change the base URL.
+- **Smart Routing** — Automatic failover and routing across providers.
 
-```sh
-npx create-turbo@latest
-```
+## Tech Stack
 
-## What's inside?
+| Technology | Purpose |
+|------------|---------|
+| **Bun** | Runtime & package manager |
+| **Elysia.js** | Backend API framework |
+| **React** | Frontend UI |
+| **Prisma** | Database ORM |
+| **PostgreSQL** | Database |
+| **TanStack Query** | Data fetching |
+| **Tailwind CSS** | Styling (Comic book theme) |
+| **Turborepo** | Monorepo management |
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## Project Structure
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+oneapi/
+├── apps/
+│   ├── api-backend/            # AI model routing API (port 4000)
+│   ├── dashboard-frontend/     # React dashboard UI (port 3001)
+│   └── primary-backend/        # Auth, API keys, payments (port 3000)
+└── packages/
+    ├── db/                     # Prisma schema & database
+    ├── ui/                     # Shared UI components
+    ├── eslint-config/          # ESLint configuration
+    └── typescript-config/      # Shared TypeScript configs
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+## Getting Started
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### Prerequisites
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+- [Bun](https://bun.sh) (v1.3+)
+- [Docker](https://www.docker.com/) (for PostgreSQL)
 
-### Develop
+### 1. Clone & Install
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+git clone <your-repo-url>
+cd oneapi
+bun install
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### 2. Start PostgreSQL with Docker
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+```bash
+docker run --name oneapi-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=openrouter -p 5432:5432 -d postgres:16
 ```
 
-### Remote Caching
+### 3. Configure Environment
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+Create `.env` files in the root and `packages/db/`:
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/openrouter"
+JWT_SECRET="your-secret-key-here"
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### 4. Setup Database
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+```bash
+cd packages/db
+bunx prisma generate
+bunx prisma db push
 ```
 
-## Useful Links
+### 5. Run Development Servers
 
-Learn more about the power of Turborepo:
+```bash
+# From root directory
+bun run dev
+```
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+This starts all three apps:
+
+| App | URL | Description |
+|-----|-----|-------------|
+| Dashboard | http://localhost:3001 | Frontend UI |
+| Primary API | http://localhost:3000 | Auth, keys, payments |
+| AI API | http://localhost:4000 | Model routing endpoint |
+
+## API Usage
+
+```typescript
+const response = await fetch("https://oneapi.dev/api/v1/chat", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "anthropic/claude-sonnet-4-5",
+    messages: [{ role: "user", content: "Hello!" }]
+  })
+});
+```
+
+## Database Schema
+
+| Table | Purpose |
+|-------|---------|
+| `User` | Accounts with email, password, credits balance |
+| `ApiKey` | User API keys with usage tracking |
+| `Model` | Available AI models |
+| `Provider` | AI providers (OpenAI, Anthropic, Google) |
+| `ModelProviderMapping` | Links models to providers with pricing |
+| `Conversation` | Request logs with token counts |
+| `OnrampTransaction` | Credit purchase history |
+
+## License
+
+MIT
