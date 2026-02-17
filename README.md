@@ -1,4 +1,4 @@
-# OneAPI — Unified AI API Gateway
+# OneAPI - Unified AI API Gateway
 
 OneAPI is a unified API gateway that lets you access 200+ AI models (GPT-4, Claude, Gemini, Llama, and more) through a single endpoint. One API key, one integration, all models.
 
