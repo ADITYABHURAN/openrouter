@@ -68,8 +68,8 @@ export function Credits() {
             <div className="space-y-8">
                 {/* Header */}
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight">Credits</h1>
-                    <p className="text-muted-foreground text-sm mt-1">
+                    <h1 className="text-3xl font-bold tracking-wide" style={{ fontFamily: "'Bangers', cursive" }}>Credits</h1>
+                    <p className="text-muted-foreground text-sm mt-1 font-bold">
                         Manage your account balance and add credits.
                     </p>
                 </div>
@@ -94,32 +94,36 @@ export function Credits() {
                         </Card>
                     )}
 
-                    <Card className="bg-card/50 border-border/50">
+                    <Card className="comic-card">
                         <CardHeader className="pb-2">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm text-muted-foreground">Credits available</span>
-                                <TrendingUp className="size-4 text-muted-foreground/60" />
+                                <span className="text-sm font-bold text-muted-foreground">Credits available</span>
+                                <div className="size-8 rounded-lg bg-[#34C759] border-2 border-[#1a1a1a] flex items-center justify-center">
+                                    <TrendingUp className="size-4 text-white" />
+                                </div>
                             </div>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-3xl font-bold tracking-tight">
+                            <p className="text-4xl font-bold tracking-tight" style={{ fontFamily: "'Bangers', cursive" }}>
                                 {userProfileQuery.isLoading ? (
                                     <Loader2 className="size-5 animate-spin text-muted-foreground" />
                                 ) : (
                                     credits
                                 )}
                             </p>
-                            <p className="text-xs text-muted-foreground mt-1">
+                            <p className="text-xs text-muted-foreground mt-1 font-bold">
                                 across {apiKeys.length} API key{apiKeys.length !== 1 ? "s" : ""}
                             </p>
                         </CardContent>
                     </Card>
 
-                    <Card className="bg-card/50 border-border/50">
+                    <Card className="comic-card" style={{ transform: 'rotate(1deg)' }}>
                         <CardHeader className="pb-2">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm text-muted-foreground">Per-Key Breakdown</span>
-                                <Coins className="size-4 text-muted-foreground/60" />
+                                <span className="text-sm font-bold text-muted-foreground">Per-Key Breakdown</span>
+                                <div className="size-8 rounded-lg bg-[#FF9500] border-2 border-[#1a1a1a] flex items-center justify-center">
+                                    <Coins className="size-4 text-white" />
+                                </div>
                             </div>
                         </CardHeader>
                         <CardContent>
@@ -149,10 +153,10 @@ export function Credits() {
                 </div>
 
                 {/* Add credits */}
-                <Card className="bg-card/30 border-border/50">
+                <Card className="comic-card">
                     <CardHeader>
-                        <CardTitle className="text-lg">Add Credits</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-xl" style={{ fontFamily: "'Bangers', cursive" }}>Add Credits</CardTitle>
+                        <CardDescription className="font-bold">
                             Top up your account with 1,000 credits per transaction.
                         </CardDescription>
                     </CardHeader>

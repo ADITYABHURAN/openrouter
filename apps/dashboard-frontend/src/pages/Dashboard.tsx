@@ -49,9 +49,9 @@ export function Dashboard() {
             <div className="space-y-8">
                 {/* Header */}
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-                    <p className="text-muted-foreground text-sm mt-1">
-                        Overview of your OpenRouter account.
+                    <h1 className="text-3xl font-bold tracking-wide" style={{ fontFamily: "'Bangers', cursive" }}>Dashboard</h1>
+                    <p className="text-muted-foreground text-sm mt-1 font-bold">
+                        Overview of your OneAPI account.
                     </p>
                 </div>
 
@@ -63,52 +63,58 @@ export function Dashboard() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <Card className="bg-card/50 border-border/50">
+                        <Card className="comic-card">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm text-muted-foreground">Active API Keys</span>
-                                    <Key className="size-4 text-muted-foreground/60" />
+                                    <span className="text-sm font-bold text-muted-foreground">Active API Keys</span>
+                                    <div className="size-8 rounded-lg bg-[#FF3B30] border-2 border-[#1a1a1a] flex items-center justify-center">
+                                        <Key className="size-4 text-white" />
+                                    </div>
                                 </div>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold tracking-tight">
+                                <p className="text-4xl font-bold tracking-tight" style={{ fontFamily: "'Bangers', cursive" }}>
                                     {activeKeys.length}
                                 </p>
-                                <p className="text-xs text-muted-foreground mt-1">
+                                <p className="text-xs text-muted-foreground mt-1 font-bold">
                                     {apiKeys.length} total
                                 </p>
                             </CardContent>
                         </Card>
 
-                        <Card className="bg-card/50 border-border/50">
+                        <Card className="comic-card" style={{ transform: 'rotate(1deg)' }}>
                             <CardHeader className="pb-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm text-muted-foreground">Credits Used</span>
-                                    <Coins className="size-4 text-muted-foreground/60" />
+                                    <span className="text-sm font-bold text-muted-foreground">Credits Used</span>
+                                    <div className="size-8 rounded-lg bg-[#007AFF] border-2 border-[#1a1a1a] flex items-center justify-center">
+                                        <Coins className="size-4 text-white" />
+                                    </div>
                                 </div>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold tracking-tight">
+                                <p className="text-4xl font-bold tracking-tight" style={{ fontFamily: "'Bangers', cursive" }}>
                                     {totalCreditsUsed.toLocaleString()}
                                 </p>
-                                <p className="text-xs text-muted-foreground mt-1">
+                                <p className="text-xs text-muted-foreground mt-1 font-bold">
                                     across all keys
                                 </p>
                             </CardContent>
                         </Card>
 
-                        <Card className="bg-card/50 border-border/50">
+                        <Card className="comic-card" style={{ transform: 'rotate(-1deg)' }}>
                             <CardHeader className="pb-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm text-muted-foreground">Available Models</span>
-                                    <Layers className="size-4 text-muted-foreground/60" />
+                                    <span className="text-sm font-bold text-muted-foreground">Available Models</span>
+                                    <div className="size-8 rounded-lg bg-[#34C759] border-2 border-[#1a1a1a] flex items-center justify-center">
+                                        <Layers className="size-4 text-white" />
+                                    </div>
                                 </div>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold tracking-tight">
+                                <p className="text-4xl font-bold tracking-tight" style={{ fontFamily: "'Bangers', cursive" }}>
                                     {modelCount}
                                 </p>
-                                <p className="text-xs text-muted-foreground mt-1">
+                                <p className="text-xs text-muted-foreground mt-1 font-bold">
                                     from all providers
                                 </p>
                             </CardContent>

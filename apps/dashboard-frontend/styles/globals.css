@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -39,75 +40,77 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-comic: 'Comic Neue', cursive;
+  --font-bangers: 'Bangers', cursive;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.5rem;
+  --background: #FFFEF0;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #FF3B30;
+  --primary-foreground: #ffffff;
+  --secondary: #FFE135;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f5dc;
+  --muted-foreground: #555555;
+  --accent: #007AFF;
+  --accent-foreground: #ffffff;
+  --destructive: #FF3B30;
+  --border: #1a1a1a;
+  --input: #1a1a1a;
+  --ring: #007AFF;
+  --chart-1: #FF3B30;
+  --chart-2: #007AFF;
+  --chart-3: #FFE135;
+  --chart-4: #34C759;
+  --chart-5: #AF52DE;
+  --sidebar: #FFE135;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #FF3B30;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #007AFF;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #1a1a1a;
+  --sidebar-ring: #007AFF;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #1a1a2e;
+  --foreground: #ffffff;
+  --card: #16213e;
+  --card-foreground: #ffffff;
+  --popover: #16213e;
+  --popover-foreground: #ffffff;
+  --primary: #FF3B30;
+  --primary-foreground: #ffffff;
+  --secondary: #FFE135;
+  --secondary-foreground: #1a1a1a;
+  --muted: #0f3460;
+  --muted-foreground: #a0a0a0;
+  --accent: #007AFF;
+  --accent-foreground: #ffffff;
+  --destructive: #FF3B30;
+  --border: #FFE135;
+  --input: #FFE135;
+  --ring: #007AFF;
+  --chart-1: #FF3B30;
+  --chart-2: #007AFF;
+  --chart-3: #FFE135;
+  --chart-4: #34C759;
+  --chart-5: #AF52DE;
+  --sidebar: #16213e;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #FF3B30;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #FFE135;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #FFE135;
+  --sidebar-ring: #007AFF;
 }
 
 @layer base {
@@ -116,5 +119,103 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Comic Neue', cursive;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Comic Book Utilities */
+.comic-border {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.comic-border-yellow {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #FFE135;
+}
+
+.comic-border-red {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #FF3B30;
+}
+
+.comic-border-blue {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #007AFF;
+}
+
+.halftone {
+  background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.halftone-yellow {
+  background-image: radial-gradient(circle, #FFE135 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border: 3px solid #1a1a1a;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  border-width: 15px 10px 0;
+  border-style: solid;
+  border-color: #1a1a1a transparent;
+}
+
+.pow-badge {
+  background: #FFE135;
+  border: 3px solid #1a1a1a;
+  transform: rotate(-5deg);
+  font-family: 'Bangers', cursive;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+.comic-btn {
+  border: 3px solid #1a1a1a !important;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
+  transition: all 0.1s ease;
+}
+
+.comic-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+}
+
+.comic-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.comic-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  background: #ffffff;
+}
+
+.dark .comic-card {
+  background: #16213e;
+  border-color: #FFE135;
+  box-shadow: 6px 6px 0px #FFE135;
+}
+
+.action-text {
+  font-family: 'Bangers', cursive;
+  text-shadow: 2px 2px 0px #1a1a1a, -1px -1px 0px #1a1a1a, 1px -1px 0px #1a1a1a, -1px 1px 0px #1a1a1a;
 }

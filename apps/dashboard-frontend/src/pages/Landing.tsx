@@ -10,6 +10,7 @@ import {
     BarChart3,
     Code2,
     Layers,
+    Sparkles,
 } from "lucide-react";
 
 const features = [
@@ -17,31 +18,37 @@ const features = [
         icon: Globe,
         title: "200+ Models",
         description: "Access GPT-4, Claude, Llama, Gemini, and hundreds more through a single endpoint.",
+        color: "bg-[#FF3B30]",
     },
     {
         icon: Layers,
         title: "Unified API",
         description: "One integration, every model. Switch providers without changing your code.",
+        color: "bg-[#007AFF]",
     },
     {
         icon: BarChart3,
         title: "Usage Analytics",
         description: "Track spending, monitor usage, and optimize costs across all your API keys.",
+        color: "bg-[#34C759]",
     },
     {
         icon: Shield,
         title: "Enterprise Ready",
         description: "SOC 2 compliant infrastructure with 99.9% uptime and global edge routing.",
+        color: "bg-[#AF52DE]",
     },
     {
         icon: Code2,
         title: "Developer First",
         description: "OpenAI-compatible API. Drop-in replacement — just change the base URL.",
+        color: "bg-[#FF9500]",
     },
     {
         icon: Zap,
         title: "Instant Routing",
         description: "Automatic failover and smart routing finds the fastest, cheapest provider.",
+        color: "bg-[#FF3B30]",
     },
 ];
 
@@ -60,26 +67,35 @@ export function Landing() {
     const modelCount = modelsQuery.data?.models?.length ?? 200;
 
     return (
-        <div className="dark min-h-screen bg-background text-foreground">
+        <div className="dark min-h-screen bg-background text-foreground overflow-hidden">
+            {/* Comic Halftone Background */}
+            <div 
+                className="fixed inset-0 opacity-20 pointer-events-none"
+                style={{
+                    backgroundImage: "radial-gradient(circle, #FFE135 1.5px, transparent 1.5px)",
+                    backgroundSize: "24px 24px",
+                }}
+            />
+
             {/* Navigation */}
-            <header className="fixed top-0 inset-x-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+            <header className="fixed top-0 inset-x-0 z-50 border-b-4 border-[#1a1a1a] bg-[#FFE135]">
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                        <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10 border border-primary/20">
-                            <Zap className="size-3.5 text-primary" />
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center size-10 bg-[#FF3B30] border-[3px] border-[#1a1a1a] rounded-lg" style={{ transform: 'rotate(-3deg)' }}>
+                            <Zap className="size-5 text-white" />
                         </div>
-                        <span className="text-sm font-semibold tracking-tight">
-                            OpenRouter
+                        <span className="text-2xl font-bold tracking-wide text-[#1a1a1a]" style={{ fontFamily: "'Bangers', cursive" }}>
+                            OneAPI
                         </span>
                     </div>
                     <div className="flex items-center gap-3">
-                        <Button variant="ghost" size="sm" asChild>
+                        <Button variant="ghost" size="sm" asChild className="text-[#1a1a1a] font-bold hover:bg-white/50">
                             <Link to="/signin">Sign in</Link>
                         </Button>
-                        <Button size="sm" asChild>
+                        <Button size="sm" asChild className="comic-btn bg-[#FF3B30] text-white hover:bg-[#FF3B30]">
                             <Link to="/signup">
                                 Get started
-                                <ArrowRight className="size-3.5" />
+                                <ArrowRight className="size-4" />
                             </Link>
                         </Button>
                     </div>
@@ -87,92 +103,95 @@ export function Landing() {
             </header>
 
             {/* Hero */}
-            <section className="relative pt-32 pb-24 overflow-hidden">
-                {/* Background effects */}
-                <div
-                    className="absolute w-[800px] h-[800px] rounded-full opacity-[0.06] blur-[150px]"
-                    style={{
-                        background: "radial-gradient(circle, oklch(0.7 0.15 55) 0%, transparent 70%)",
-                        top: "-20%",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                    }}
-                />
-                <div
-                    className="absolute inset-0 opacity-[0.3]"
-                    style={{
-                        backgroundImage: "radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.06) 1px, transparent 0)",
-                        backgroundSize: "32px 32px",
-                    }}
-                />
+            <section className="relative pt-32 pb-24">
+                {/* Starburst Background */}
+                <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] opacity-10 pointer-events-none">
+                    <svg viewBox="0 0 200 200" className="w-full h-full">
+                        <polygon 
+                            points="100,0 115,70 185,50 130,100 185,150 115,130 100,200 85,130 15,150 70,100 15,50 85,70" 
+                            fill="#FFE135"
+                            stroke="#1a1a1a"
+                            strokeWidth="2"
+                        />
+                    </svg>
+                </div>
 
                 <div className="relative max-w-6xl mx-auto px-6 text-center">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-border/60 bg-card/50 backdrop-blur-sm text-xs font-medium text-muted-foreground mb-8">
-                        <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        {modelCount}+ models available
+                    {/* POW Badge */}
+                    <div className="inline-block mb-6">
+                        <div className="pow-badge text-lg" style={{ transform: 'rotate(-5deg)' }}>
+                            <Sparkles className="inline size-5 mr-2" />
+                            {modelCount}+ MODELS AVAILABLE!
+                        </div>
                     </div>
 
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl mx-auto">
-                        One API for{" "}
-                        <span
-                            className="bg-clip-text text-transparent"
-                            style={{
-                                backgroundImage: "linear-gradient(135deg, oklch(0.85 0.15 55), oklch(0.7 0.2 330), oklch(0.65 0.25 264))",
+                    <h1 
+                        className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-wide leading-tight max-w-5xl mx-auto"
+                        style={{ fontFamily: "'Bangers', cursive" }}
+                    >
+                        <span className="text-foreground">ONE API FOR </span>
+                        <br />
+                        <span 
+                            className="text-[#FF3B30] inline-block"
+                            style={{ 
+                                textShadow: '3px 3px 0px #1a1a1a',
+                                transform: 'rotate(-2deg)',
+                                display: 'inline-block'
                             }}
                         >
-                            every AI model
+                            EVERY AI MODEL!
                         </span>
                     </h1>
 
-                    <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                    <p className="mt-8 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-bold">
                         Route to the best models from OpenAI, Anthropic, Google, Meta, and more.
-                        One integration, infinite possibilities.
+                        <span className="text-[#007AFF]"> One integration, infinite possibilities!</span>
                     </p>
 
-                    <div className="flex items-center justify-center gap-4 mt-10">
-                        <Button size="lg" asChild className="h-12 px-8 text-base">
+                    <div className="flex items-center justify-center gap-4 mt-10 flex-wrap">
+                        <Button size="lg" asChild className="comic-btn bg-[#FF3B30] text-white h-14 px-10 text-lg hover:bg-[#FF3B30]">
                             <Link to="/signup">
-                                Start building
-                                <ArrowRight className="size-4" />
+                                START BUILDING!
+                                <ArrowRight className="size-5" />
                             </Link>
                         </Button>
-                        <Button variant="outline" size="lg" asChild className="h-12 px-8 text-base">
-                            <Link to="/dashboard">View dashboard</Link>
+                        <Button variant="outline" size="lg" asChild className="comic-btn bg-[#FFE135] text-[#1a1a1a] h-14 px-10 text-lg hover:bg-[#FFE135]">
+                            <Link to="/dashboard">View Dashboard</Link>
                         </Button>
                     </div>
 
-                    {/* Code snippet */}
+                    {/* Code snippet - Comic Style */}
                     <div className="mt-16 max-w-2xl mx-auto">
-                        <div className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm overflow-hidden shadow-2xl text-left">
-                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50">
-                                <span className="size-3 rounded-full bg-red-500/60" />
-                                <span className="size-3 rounded-full bg-yellow-500/60" />
-                                <span className="size-3 rounded-full bg-green-500/60" />
-                                <span className="ml-2 text-xs text-muted-foreground font-mono">request.ts</span>
+                        <div className="comic-card rounded-xl overflow-hidden">
+                            <div className="flex items-center gap-2 px-4 py-3 border-b-[3px] border-[#1a1a1a] bg-[#FFE135]">
+                                <span className="size-4 rounded-full bg-[#FF3B30] border-2 border-[#1a1a1a]" />
+                                <span className="size-4 rounded-full bg-[#FFE135] border-2 border-[#1a1a1a]" />
+                                <span className="size-4 rounded-full bg-[#34C759] border-2 border-[#1a1a1a]" />
+                                <span className="ml-2 text-sm text-[#1a1a1a] font-bold">request.ts</span>
                             </div>
-                            <pre className="p-5 text-sm font-mono leading-relaxed overflow-x-auto">
+                            <pre className="p-5 text-sm font-mono leading-relaxed overflow-x-auto text-left bg-[#1a1a2e]">
                                 <code>
-                                    <span className="text-muted-foreground">{"// Just change the base URL — that's it\n"}</span>
-                                    <span className="text-blue-400">{"const "}</span>
-                                    <span className="text-foreground">{"response "}</span>
-                                    <span className="text-muted-foreground">{"= "}</span>
-                                    <span className="text-blue-400">{"await "}</span>
-                                    <span className="text-yellow-300">{"fetch"}</span>
-                                    <span className="text-foreground">{"(\n"}</span>
-                                    <span className="text-emerald-400">{'  "https://openrouter.ai/api/v1/chat"'}</span>
-                                    <span className="text-foreground">{",\n  { "}</span>
-                                    <span className="text-foreground">{"method: "}</span>
-                                    <span className="text-emerald-400">{'"POST"'}</span>
-                                    <span className="text-foreground">{",\n    body: JSON."}</span>
-                                    <span className="text-yellow-300">{"stringify"}</span>
-                                    <span className="text-foreground">{"({\n"}</span>
-                                    <span className="text-foreground">{"      model: "}</span>
-                                    <span className="text-emerald-400">{'"anthropic/claude-sonnet-4-5"'}</span>
-                                    <span className="text-foreground">{",\n      messages: [{ role: "}</span>
-                                    <span className="text-emerald-400">{'"user"'}</span>
-                                    <span className="text-foreground">{", content: "}</span>
-                                    <span className="text-emerald-400">{'"Hello!"'}</span>
-                                    <span className="text-foreground">{" }]\n    })\n  }\n)"}</span>
+                                    <span className="text-[#a0a0a0]">{"// Just change the base URL — that's it!\n"}</span>
+                                    <span className="text-[#007AFF]">{"const "}</span>
+                                    <span className="text-white">{"response "}</span>
+                                    <span className="text-[#a0a0a0]">{"= "}</span>
+                                    <span className="text-[#007AFF]">{"await "}</span>
+                                    <span className="text-[#FFE135]">{"fetch"}</span>
+                                    <span className="text-white">{"(\n"}</span>
+                                    <span className="text-[#34C759]">{'  "https://oneapi.dev/api/v1/chat"'}</span>
+                                    <span className="text-white">{",\n  { "}</span>
+                                    <span className="text-white">{"method: "}</span>
+                                    <span className="text-[#34C759]">{'"POST"'}</span>
+                                    <span className="text-white">{",\n    body: JSON."}</span>
+                                    <span className="text-[#FFE135]">{"stringify"}</span>
+                                    <span className="text-white">{"({\n"}</span>
+                                    <span className="text-white">{"      model: "}</span>
+                                    <span className="text-[#34C759]">{'"anthropic/claude-sonnet-4-5"'}</span>
+                                    <span className="text-white">{",\n      messages: [{ role: "}</span>
+                                    <span className="text-[#34C759]">{'"user"'}</span>
+                                    <span className="text-white">{", content: "}</span>
+                                    <span className="text-[#34C759]">{'"Hello!"'}</span>
+                                    <span className="text-white">{" }]\n    })\n  }\n)"}</span>
                                 </code>
                             </pre>
                         </div>
@@ -180,29 +199,41 @@ export function Landing() {
                 </div>
             </section>
 
-            {/* Features */}
-            <section className="py-24 border-t border-border/30">
+            {/* Features - Comic Panels */}
+            <section className="py-24 border-t-4 border-[#1a1a1a]">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                            Everything you need to ship AI
+                        <div className="pow-badge text-xl inline-block mb-4">
+                            SUPER POWERS!
+                        </div>
+                        <h2 
+                            className="text-4xl sm:text-5xl font-bold tracking-wide"
+                            style={{ fontFamily: "'Bangers', cursive" }}
+                        >
+                            Everything You Need to Ship AI
                         </h2>
-                        <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto">
+                        <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto font-bold">
                             Built for developers who want to move fast without being locked into a single provider.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {features.map((feature) => (
+                        {features.map((feature, index) => (
                             <div
                                 key={feature.title}
-                                className="group rounded-xl border border-border/40 bg-card/30 p-6 hover:border-border/80 hover:bg-card/60 transition-all duration-300"
+                                className="comic-card rounded-xl p-6 hover:scale-105 transition-transform duration-200"
+                                style={{ transform: `rotate(${index % 2 === 0 ? '-1' : '1'}deg)` }}
                             >
-                                <div className="flex items-center justify-center size-10 rounded-lg bg-primary/5 border border-border/50 mb-4 group-hover:bg-primary/10 transition-colors">
-                                    <feature.icon className="size-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                <div className={`flex items-center justify-center size-14 rounded-lg ${feature.color} border-[3px] border-[#1a1a1a] mb-4`}>
+                                    <feature.icon className="size-7 text-white" />
                                 </div>
-                                <h3 className="font-semibold text-sm mb-2">{feature.title}</h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                <h3 
+                                    className="text-xl font-bold mb-2"
+                                    style={{ fontFamily: "'Bangers', cursive" }}
+                                >
+                                    {feature.title}
+                                </h3>
+                                <p className="text-muted-foreground leading-relaxed">
                                     {feature.description}
                                 </p>
                             </div>
@@ -213,29 +244,36 @@ export function Landing() {
 
             {/* Models preview */}
             {modelsQuery.data?.models && modelsQuery.data.models.length > 0 && (
-                <section className="py-24 border-t border-border/30">
+                <section className="py-24 border-t-4 border-[#1a1a1a]" style={{ background: 'rgba(255, 225, 53, 0.1)' }}>
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                                Popular models
+                            <div className="pow-badge text-xl inline-block mb-4 bg-[#007AFF] text-white">
+                                ZAP!
+                            </div>
+                            <h2 
+                                className="text-4xl sm:text-5xl font-bold tracking-wide"
+                                style={{ fontFamily: "'Bangers', cursive" }}
+                            >
+                                Popular Models
                             </h2>
-                            <p className="mt-4 text-muted-foreground text-lg">
+                            <p className="mt-4 text-muted-foreground text-lg font-bold">
                                 Access the latest and greatest from every major provider.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {modelsQuery.data.models.slice(0, 9).map((model) => (
+                            {modelsQuery.data.models.slice(0, 9).map((model, index) => (
                                 <div
                                     key={model.id}
-                                    className="flex items-center gap-3 rounded-lg border border-border/40 bg-card/20 px-4 py-3 hover:border-border/80 transition-colors"
+                                    className="flex items-center gap-3 comic-card rounded-lg px-4 py-3 hover:scale-102 transition-transform"
+                                    style={{ transform: `rotate(${index % 3 === 0 ? '-0.5' : index % 3 === 1 ? '0' : '0.5'}deg)` }}
                                 >
-                                    <div className="size-8 rounded-md bg-primary/5 border border-border/50 flex items-center justify-center text-xs font-bold text-muted-foreground">
+                                    <div className="size-10 rounded-lg bg-[#FF3B30] border-2 border-[#1a1a1a] flex items-center justify-center text-sm font-bold text-white">
                                         {model.company.name.charAt(0)}
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-sm font-medium truncate">{model.name}</p>
-                                        <p className="text-xs text-muted-foreground">{model.company.name}</p>
+                                        <p className="font-bold truncate">{model.name}</p>
+                                        <p className="text-sm text-muted-foreground">{model.company.name}</p>
                                     </div>
                                 </div>
                             ))}
@@ -245,32 +283,38 @@ export function Landing() {
             )}
 
             {/* CTA */}
-            <section className="py-24 border-t border-border/30">
+            <section className="py-24 border-t-4 border-[#1a1a1a]">
                 <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                        Ready to start building?
+                    <div className="pow-badge text-2xl inline-block mb-6 bg-[#FF3B30] text-white" style={{ transform: 'rotate(-3deg)' }}>
+                        BOOM!
+                    </div>
+                    <h2 
+                        className="text-4xl sm:text-5xl font-bold tracking-wide"
+                        style={{ fontFamily: "'Bangers', cursive" }}
+                    >
+                        Ready to Start Building?
                     </h2>
-                    <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto">
+                    <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto font-bold">
                         Create a free account and start making API calls in minutes.
                     </p>
-                    <Button size="lg" asChild className="mt-8 h-12 px-8 text-base">
+                    <Button size="lg" asChild className="comic-btn bg-[#FF3B30] text-white mt-8 h-14 px-10 text-lg hover:bg-[#FF3B30]">
                         <Link to="/signup">
-                            Create free account
-                            <ArrowRight className="size-4" />
+                            CREATE FREE ACCOUNT!
+                            <ArrowRight className="size-5" />
                         </Link>
                     </Button>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="border-t border-border/30 py-8">
-                <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <footer className="border-t-4 border-[#1a1a1a] py-8 bg-[#FFE135]">
+                <div className="max-w-6xl mx-auto px-6 flex items-center justify-between flex-wrap gap-4">
                     <div className="flex items-center gap-2">
-                        <Zap className="size-3.5 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">OpenRouter</span>
+                        <Zap className="size-5 text-[#1a1a1a]" />
+                        <span className="text-lg font-bold text-[#1a1a1a]" style={{ fontFamily: "'Bangers', cursive" }}>OneAPI</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">
-                        &copy; 2026 OpenRouter. All rights reserved.
+                    <p className="text-sm font-bold text-[#1a1a1a]">
+                        &copy; 2026 OneAPI. All rights reserved.
                     </p>
                 </div>
             </footer>

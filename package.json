@@ -1,5 +1,5 @@
 {
-  "name": "openrouter",
+  "name": "oneapi",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -109,17 +109,17 @@ export function ApiKeys() {
             <div className="space-y-8">
                 {/* Header */}
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight">API Keys</h1>
-                    <p className="text-muted-foreground text-sm mt-1">
+                    <h1 className="text-3xl font-bold tracking-wide" style={{ fontFamily: "'Bangers', cursive" }}>API Keys</h1>
+                    <p className="text-muted-foreground text-sm mt-1 font-bold">
                         Create and manage your API keys for accessing models.
                     </p>
                 </div>
 
                 {/* Create new key */}
-                <Card className="bg-card/30 border-border/50">
+                <Card className="comic-card">
                     <CardHeader>
-                        <CardTitle className="text-lg">Create new key</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-xl" style={{ fontFamily: "'Bangers', cursive" }}>Create New Key</CardTitle>
+                        <CardDescription className="font-bold">
                             Give your key a descriptive name to identify it later.
                         </CardDescription>
                     </CardHeader>
@@ -138,13 +138,13 @@ export function ApiKeys() {
                                     id="key-name"
                                     ref={nameRef}
                                     placeholder="e.g. Production, Development, My App"
-                                    className="h-10"
+                                    className="h-11 border-2 border-[#1a1a1a]"
                                     required
                                 />
                             </div>
                             <Button
                                 type="submit"
-                                className="h-10"
+                                className="h-11 comic-btn bg-[#FF3B30] text-white hover:bg-[#FF3B30]"
                                 disabled={createMutation.isPending}
                             >
                                 {createMutation.isPending ? (

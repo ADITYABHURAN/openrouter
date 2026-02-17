@@ -46,57 +46,45 @@ export function Signup() {
 
     return (
         <div className="dark min-h-screen relative flex items-center justify-center bg-background overflow-hidden">
-            {/* Animated gradient orbs */}
-            <div
-                className="absolute w-[600px] h-[600px] rounded-full opacity-[0.07] blur-[120px] animate-pulse"
+            {/* Comic Halftone Background */}
+            <div 
+                className="absolute inset-0 opacity-20 pointer-events-none"
                 style={{
-                    background:
-                        "radial-gradient(circle, oklch(0.7 0.15 55) 0%, transparent 70%)",
-                    top: "-10%",
-                    right: "-5%",
-                    animationDuration: "8s",
-                }}
-            />
-            <div
-                className="absolute w-[500px] h-[500px] rounded-full opacity-[0.05] blur-[100px] animate-pulse"
-                style={{
-                    background:
-                        "radial-gradient(circle, oklch(0.6 0.2 264) 0%, transparent 70%)",
-                    bottom: "-15%",
-                    left: "-10%",
-                    animationDuration: "12s",
-                    animationDelay: "2s",
+                    backgroundImage: "radial-gradient(circle, #FFE135 1.5px, transparent 1.5px)",
+                    backgroundSize: "24px 24px",
                 }}
             />
 
-            {/* Dot grid pattern */}
-            <div
-                className="absolute inset-0 opacity-[0.4]"
-                style={{
-                    backgroundImage:
-                        "radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.08) 1px, transparent 0)",
-                    backgroundSize: "32px 32px",
-                }}
-            />
+            {/* Starburst */}
+            <div className="absolute bottom-10 left-10 w-[200px] h-[200px] opacity-20 pointer-events-none">
+                <svg viewBox="0 0 200 200" className="w-full h-full">
+                    <polygon 
+                        points="100,0 115,70 185,50 130,100 185,150 115,130 100,200 85,130 15,150 70,100 15,50 85,70" 
+                        fill="#007AFF"
+                        stroke="#1a1a1a"
+                        strokeWidth="2"
+                    />
+                </svg>
+            </div>
 
             {/* Content */}
             <div className="relative z-10 w-full max-w-[420px] px-6">
                 {/* Brand */}
-                <div className="flex items-center justify-center gap-2.5 mb-10">
-                    <div className="flex items-center justify-center size-9 rounded-lg bg-primary/10 border border-primary/20">
-                        <Zap className="size-4 text-primary" />
+                <div className="flex items-center justify-center gap-3 mb-10">
+                    <div className="flex items-center justify-center size-11 rounded-lg bg-[#FF3B30] border-[3px] border-[#1a1a1a]" style={{ transform: 'rotate(-3deg)' }}>
+                        <Zap className="size-5 text-white" />
                     </div>
-                    <span className="text-lg font-semibold tracking-tight text-foreground">
-                        OpenRouter
+                    <span className="text-2xl font-bold tracking-wide text-foreground" style={{ fontFamily: "'Bangers', cursive" }}>
+                        OneAPI
                     </span>
                 </div>
 
-                <Card className="border-border/50 bg-card/80 backdrop-blur-xl shadow-2xl">
+                <Card className="comic-card">
                     <CardHeader className="text-center pb-2">
-                        <CardTitle className="text-xl tracking-tight">
-                            Create your account
+                        <CardTitle className="text-2xl tracking-wide" style={{ fontFamily: "'Bangers', cursive" }}>
+                            Create Your Account!
                         </CardTitle>
-                        <CardDescription className="text-muted-foreground/80">
+                        <CardDescription className="text-muted-foreground font-bold">
                             Access 200+ AI models through a single API
                         </CardDescription>
                     </CardHeader>
@@ -161,7 +149,7 @@ export function Signup() {
 
                             <Button
                                 type="submit"
-                                className="w-full h-10 mt-2"
+                                className="w-full h-11 mt-2 comic-btn bg-[#FF3B30] text-white hover:bg-[#FF3B30]"
                                 disabled={mutation.isPending || mutation.isSuccess}
                             >
                                 {mutation.isPending ? (
