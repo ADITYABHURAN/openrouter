@@ -2,7 +2,8 @@ import { treaty } from '@elysiajs/eden'
 import type { App } from 'app'
 import { createContext, useContext } from 'react';
 
-const API_URL = process.env.VITE_API_URL || 'localhost:3000';
+let API_URL = 'localhost:3000';
+try { if (process.env.VITE_API_URL) API_URL = process.env.VITE_API_URL; } catch {}
 
 const client = treaty<App>(API_URL, {
     fetch: {

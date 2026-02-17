@@ -11,7 +11,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ElysiaClientContextProvider } from "./providers/Eden";
 import { treaty } from "@elysiajs/eden";
 
-const API_URL = process.env.VITE_API_URL || 'localhost:3000';
+let API_URL = 'localhost:3000';
+try { if (process.env.VITE_API_URL) API_URL = process.env.VITE_API_URL; } catch {}
 
 const client = treaty<App>(API_URL, {
   fetch: {
