@@ -1,13 +1,18 @@
 import { Messages } from "../types";
 import { BaseLlm, LlmResponse } from "./Base";
 import OpenAI from "openai";
-const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+
+let client: OpenAI;
+function getClient() {
+    if (!client) {
+        client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    }
+    return client;
+}
 
 export class OpenAi extends BaseLlm {
     static async chat(model: string, messages: Messages): Promise<LlmResponse> {
-        const response = await client.responses.create({
+        const response = await getClient().responses.create({
             model: model,
             input:  messages.map(message => ({
                 role: message.role,

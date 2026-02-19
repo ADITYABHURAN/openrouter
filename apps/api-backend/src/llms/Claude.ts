@@ -3,15 +3,18 @@ import { Messages } from "../types";
 import { BaseLlm, LlmResponse } from "./Base";
 import { TextBlock } from "@anthropic-ai/sdk/resources";
 
-const client = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY
-});
-
+let client: Anthropic;
+function getClient() {
+    if (!client) {
+        client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    }
+    return client;
+}
 
 export class Claude extends BaseLlm {
     static async chat(model: string, messages: Messages): Promise<LlmResponse> {
         
-        const response = await client.messages.create({
+        const response = await getClient().messages.create({
             max_tokens: 2048,
             messages: messages.map(message => ({
                 role: message.role,
